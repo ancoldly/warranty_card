@@ -1,6 +1,7 @@
 import streamlit as st
 from docxtpl import DocxTemplate
 from jinja2 import Environment
+import pytz
 from datetime import datetime
 import tempfile
 
@@ -13,8 +14,10 @@ st.subheader("Thông tin khách hàng")
 customer = st.text_input("👤 Tên khách hàng")
 phone = st.text_input("📞 Số điện thoại")
 address = st.text_input("🏠 Địa chỉ")
-now = datetime.now()
-date = now.strftime("%d/%m/%Y %H:%M")
+
+tz = pytz.timezone('Asia/Ho_Chi_Minh')
+now = datetime.now(tz)
+date = now.strftime("%d/%m/%Y %H:%M:%S")
 
 # Thông tin sản phẩm (có thể xuống dòng)
 st.subheader("Thông tin sản phẩm")
